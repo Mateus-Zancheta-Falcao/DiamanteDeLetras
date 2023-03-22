@@ -4,12 +4,13 @@ namespace DiamanteDeLetras
 {
     internal class Program
     {
-        public static char letraEscolhida, letra;
+        static char letraEscolhida, letra;
         static int espacosDaMargem, quantidadeLinhas, espacosEntreAsLetras;
         static void Main(string[] args)
         {
             Mensagem();
 
+            ProcessamentoDeLinhasEspacos();
             ParteSuperior();
             ParteCentral();
             ParteInferior();
@@ -21,7 +22,10 @@ namespace DiamanteDeLetras
         {
             Console.WriteLine("Informe a letra desejada: ");
             letraEscolhida = Convert.ToChar(Console.ReadLine());
+        }
 
+        static void ProcessamentoDeLinhasEspacos()
+        {
             letra = 'A';
             espacosDaMargem = letraEscolhida - letra;
             quantidadeLinhas = letraEscolhida - letra;
