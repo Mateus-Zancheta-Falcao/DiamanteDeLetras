@@ -1,26 +1,34 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Dynamic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DiamanteDeLetras
 {
     internal class Program
     {
+        public static char letraEscolhida, letra;
+        static int espacosDaMargem, quantidadeLinhas, espacosEntreAsLetras;
         static void Main(string[] args)
         {
+            Mensagem();
+
+            ParteSuperior();
+            ParteCentral();
+            ParteInferior();
+
+            Console.ReadLine();
+        }
+
+        static void Mensagem()
+        {
             Console.WriteLine("Informe a letra desejada: ");
-            char letraEscolhida = Convert.ToChar(Console.ReadLine());
+            letraEscolhida = Convert.ToChar(Console.ReadLine());
 
-            char letra = 'A';
-
-            int espacosDaMargem = letraEscolhida - letra;
-            int quantidadeLinhas = letraEscolhida - letra;
-            int espacosEntreAsLetras = - 1;
-
-
+            letra = 'A';
+            espacosDaMargem = letraEscolhida - letra;
+            quantidadeLinhas = letraEscolhida - letra;
+            espacosEntreAsLetras = -1;
+        }
+        static void ParteSuperior()
+        {
             for (int linha = 0; linha < quantidadeLinhas; linha++)
             {
                 for (int i = 0; i < espacosDaMargem; i++)
@@ -36,17 +44,19 @@ namespace DiamanteDeLetras
                 }
 
                 if (letra != 'A')
-                    Console.Write(letra); 
+                    Console.Write(letra);
 
                 letra++;
                 espacosDaMargem--;
-                espacosEntreAsLetras+= 2;
+                espacosEntreAsLetras += 2;
 
                 Console.WriteLine();
             }
 
             Console.Write(letraEscolhida);
-
+        }
+        static void ParteCentral()
+        {
             for (int i = 0; i < espacosEntreAsLetras; i++)
             {
                 Console.Write(" ");
@@ -56,10 +66,12 @@ namespace DiamanteDeLetras
 
             letra--;
             espacosDaMargem++;
-            espacosEntreAsLetras-= 2;
+            espacosEntreAsLetras -= 2;
 
             Console.WriteLine();
-
+        }
+        static void ParteInferior()
+        {
             for (int linha = 0; linha < quantidadeLinhas; linha++)
             {
                 for (int i = 0; i < espacosDaMargem; i++)
@@ -81,12 +93,10 @@ namespace DiamanteDeLetras
 
                 letra--;
                 espacosDaMargem++;
-                espacosEntreAsLetras-= 2;
+                espacosEntreAsLetras -= 2;
 
                 Console.WriteLine();
             }
-
-            Console.ReadLine();
         }
     }
 }
